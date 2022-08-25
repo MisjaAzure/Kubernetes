@@ -9,8 +9,6 @@ Wymagane elementy:
 - System operacyjny Windows z zainstalowaną funkcją Hyper-V
 - Zainstalowany program wget. Można go pobrać z tej lokalizacji: http://gnuwin32.sourceforge.net/packages/wget.htm
 
-### Proces uruchomienia klastra
-
 #### 1. Zainstalowanie aplikacji minikube.exe
 Należy otworzyć okno konsoli PowerShell i wykonać nastepujący kod:
 
@@ -68,8 +66,30 @@ minikube tunnel
 ```
 minikube dashboard
 ```
-**Podobnie** jak wyżej. Konieczne jes otwarcie kolejnego okna cmd.exe
+**Podobnie** jak wyżej. Konieczne jest otwarcie kolejnego okna cmd.exe w trybie administratora.
 
 
 ## Uruchomienie aplikacji Arcadia
+
+#### Pobranie wymaganych plików wdrożeniowych
+
+Prponuję ustalić ścieżkę bieżącą na c:\minikube
+Najprościej zrobić to poleceniem:
+```
+cd \minikube
+```
+Nastepmnie:
+
+```
+wget https://raw.githubusercontent.com/MisjaAzure/Kubernetes/main/deployments/arcadia/all_apps.yaml
+```
+
+```
+wget https://raw.githubusercontent.com/MisjaAzure/Kubernetes/main/deployments/arcadia/ingress_arcadia.yaml
+```
+
+
+
+#### Wdrożenie aplikacji w klastrze - za pomocą ściągniętych plików
+
 
