@@ -89,6 +89,24 @@ curl --output ingress_arcadia.yaml --url https://raw.githubusercontent.com/Misja
 ```
 
 
+#### Wdrożenie pobranych plików
+
+```
+minikube kubectl -- create -f all_apps.yaml
+```
+
+```
+minikube kubectl -- create -f ingress_arcadia.yaml
+```
+
+
+Aplikacja jest dostępna pod adresem IP maszyny wirtualnej Minikube
+Aby przetestować jej działanie, należy spróbować wejść na stronę http://
+
+
+
+
+
 
 #### Wdrożenie aplikacji w klastrze - za pomocą ściągniętych plików
 
