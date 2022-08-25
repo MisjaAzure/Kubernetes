@@ -10,7 +10,7 @@ Wymagane elementy:
 
 
 #### 1. Zainstalowanie aplikacji minikube.exe
-Należy otworzyć okno konsoli PowerShell i wykonać nastepujący kod:
+Należy otworzyć okno konsoli PowerShell (jako administrator) i wykonać następujący kod:
 
 ```powershell
 New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
@@ -56,17 +56,11 @@ Po poprawnym wystartowaniu klastra, przystawka zarządznia Hyper-V, powininna pr
 minikube addons enable ingress
 ```
 
-- Włączenie opcji możliwości użycia load-balancera
-```
-minikube tunnel
-```
-> **Uwaga** Powyższe polecenie, nie uwalnia już procesu cmd.exe  W celu kontynuowania należy uruchomić kolejne okno cmd.exe - należy pamiętać o opcji "uruchom jako administrator".
-
 - Uruchomienie dashboardu
 ```
 minikube dashboard
 ```
-Po tym **podobnie** jak wyżej, konieczne jest otwarcie kolejnego okna cmd.exe w trybie administratora.
+> **Uwaga** Powyższe polecenie, nie uwalnia już procesu cmd.exe  W celu kontynuowania należy uruchomić kolejne okno cmd.exe - należy pamiętać o opcji "uruchom jako administrator".
 
 
 ## Uruchomienie aplikacji Arcadia
@@ -100,14 +94,27 @@ minikube kubectl -- create -f ingress_arcadia.yaml
 ```
 
 
-Aplikacja jest dostępna pod adresem IP maszyny wirtualnej Minikube
-Aby przetestować jej działanie, należy spróbować wejść na stronę http://
+### Testowanie działania tej aplikacji
 
 
+Aplikacja jest dostępna pod adresem IP maszyny wirtualnej Minikube (Na NodePort). Jednym ze sposobów aby odczytać ten adres, jest wgląd na zakładkę "Networking" w widoku właściwości maszyny. Przykład znajduje się na poniższej grafice.
+
+![image](/media/hv4.png)
 
 
+Aby przetestować  działanie aplikacji, należy wejść na stronę http://example.host.net  Ten fqdn powinien rozwiązywać się na IP maszyny wirtualnej. Aby tak się stało, należy w systemie z którego będziemy wchodzić na podany URL, dodać wpis do pliku hosts - w sposób jak na przykładzie poniżej.
+
+![image](/media/hv3.png)
 
 
-#### Wdrożenie aplikacji w klastrze - za pomocą ściągniętych plików
+Finalnie, aby w pełni sprawdzić działanie aplikacji, mozna się do nie zalogować.
+Robi się to poprzez przycisk:
+
+![image](/media/hv5.png)
+
+Login to: matt | Hasło: ilovef5
+
+Poprawnie pracująca aplikacja przedstawi się podobna prezencją jak niżej zamieszczona grafika.
+Można w niej przeprowadzać mozliwe operacje finansowe.  Oczywiście wszystko dzieje się w środowiku na naszym kmputerze. Moduł wysyłający email's  ocztywiście tylko emuluje taki proces. Żaden email nie trafia na zewnątrz.
 
 
