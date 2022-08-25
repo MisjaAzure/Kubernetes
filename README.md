@@ -1,4 +1,4 @@
-# Kubernetes
+# Kubernetes - instrukcja uruchomienia przykładowego środowiska.
 Dokument ten opisuje proces uruchoenia środowska Kubernetes w oparciu o oprogramowanie Minikube, zainstalowane na systemie Windows.
 Zawiera również, opis procesu zainstalowania dwóch przykładowych aplikacji WEB-owych.
 ## Uruchomienie klastra Minikube
@@ -32,7 +32,7 @@ Do tego celu można uzyć graficznej przystawki zarządzania Hyper-V (virtmgmt.m
 ![image](/media/hv.png)
 
 
-#### 3. Uruchomienie klastra.
+#### 4. Uruchomienie klastra.
 Należy urucomić wiersz konsoli cmd.exe w trybie administratora
 > **UWAGA!** - Należy wyłączyć ochronę w czasie rzeczywistym, realizowaną przez WindowsDefender. Bez tej czynności, można spodziwać się komunikatów o braku wystarczających uprawnień w trakcie wykonywania kolejnych kroków.
 
@@ -42,12 +42,32 @@ Z konsoli należy wykonać kolejno polecenia:
 ```
 minikube config set driver hyperv
 ```
+
 - wystartowanie procesu uruchamiania klastra z określeniem uzytego przełącznika 
 ```
 minikube start --hyperv-virtual-switch="switch0"
 ```
+Po poprawnym wystartowaniu klastra, przystawka zarządznia Hyper-V, powininna przedstawiać sytuację jak na poniższej grafice.
 
- 
+![image](/media/hv2.png)
+
+
+- Zainstalowanie ingress-controller /będzie potrzebny dla jednej z aplikacji
+```
+minikube addons enable ingress
+```
+
+- Wlaczenie opcji możliwości użycia load-balancera
+```
+minikube tunnel
+```
+> **Uwaga** Powyższe polecenie, nie uwalnia już procesu cmd.exe  W celu kontynuowania należy uruchomić koljne okno cmd.exe - należy pamiętać o opcji "uruchom jako administrator".
+
+- Uruchomienie dashboardu
+```
+minikube dashboard
+```
+**Podobnie** jak wyżej. Konieczne jes otwarcie kolejnego okna cmd.exe
 
 
 
