@@ -1,12 +1,13 @@
 # Kubernetes - instrukcja uruchomienia przykładowego środowiska.
 Dokument ten opisuje proces uruchoenia środowska Kubernetes w oparciu o oprogramowanie Minikube, zainstalowane na systemie Windows.
 Zawiera również, opis procesu zainstalowania dwóch przykładowych aplikacji WEB-owych.
+
 ## Uruchomienie klastra Minikube
 
 Wymagane elementy:
 - Komputer x64 z pamięcią o wielkości 6GB lub więcej
 - System operacyjny Windows z zainstalowaną funkcją Hyper-V
-- Zainstalowany program wget. Można go pobrać z tej lokalizacji: http://url.przyklad.com/test.gif
+- Zainstalowany program wget. Można go pobrać z tej lokalizacji: http://gnuwin32.sourceforge.net/packages/wget.htm
 
 ### Proces uruchomienia klastra
 
