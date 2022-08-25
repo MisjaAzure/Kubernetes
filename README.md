@@ -25,7 +25,7 @@ if ($oldPath.Split(';') -inotcontains 'C:\minikube'){ `
 ```
 3. Stworzenie wirtualnego przełącznika o nazwie "switch0". Do tego celu można uzyć graficznej przystawki zarządzania Hyper-V (virtmgmt.msc)
 
-![image](../media/hv.png)
+![image](/media/hv.png)
 
 1. asasdasd
 
