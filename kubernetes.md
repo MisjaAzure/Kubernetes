@@ -1,11 +1,12 @@
 # Kubernetes - instrukcja uruchomienia przykładowego środowiska.
-Dokument ten opisuje proces uruchomienia środowiska Kubernetes w oparciu o oprogramowanie Minikube, zainstalowane na systemie Windows.
-Zawiera również, opis procesu zainstalowania dwóch przykładowych aplikacji WEB-owych.
+Dokument ten, opisuje proces uruchomienia środowiska Kubernetes w oparciu o oprogramowanie Minikube, zainstalowane na systemie operacyjnym Windows.\
+Zawiera również, opis procesu instalowania dwóch przykładowych aplikacji WEB-owych.
 
-## Uruchomienie klastra Minikube
+## Uruchomienie klastra Minikube  / strona domowa projektu: https://minikube.sigs.k8s.io/docs/
 
 Wymagane elementy:
-- Komputer z procesorem x64 zgodnym z VT, oraz pamięcią operacyjną o wielkości 6GB lub więcej.
+- Komputer z procesorem x64 zgodnym z VT
+- 6GB lub więcej pamięci operacyjnej
 - System operacyjny Windows 10 z włączoną funkcją Hyper-V
 
 
@@ -25,15 +26,16 @@ if ($oldPath.Split(';') -inotcontains 'C:\minikube'){ `
 }
 
 ```
-#### 3. Stworzenie wirtualnego przełącznika o nazwie &#8220switch0&#8221.
-Do tego celu można uzyć graficznej przystawki zarządzania Hyper-V (virtmgmt.msc)
+
+#### 3. Stworzenie wirtualnego przełącznika o nazwie "switch0".
+Do tego celu można użyć graficznej przystawki zarządzania Hyper-V (virtmgmt.msc)
 
 ![image](/media/hv.png)
 
 
 #### 4. Uruchomienie klastra.
-Należy urucomić wiersz konsoli cmd.exe w trybie administratora
-> **UWAGA!** - Należy wyłączyć ochronę w czasie rzeczywistym, realizowaną przez WindowsDefender. Bez tej czynności, można spodziwać się komunikatów o braku wystarczających uprawnień w trakcie wykonywania kolejnych kroków.
+Należy uruchomić wiersz konsoli cmd.exe w trybie administratora.
+> **UWAGA!** - Należy wyłączyć ochronę w czasie rzeczywistym, realizowaną przez WindowsDefender. Bez tej czynności, można spodziewać się komunikatów o braku wystarczających uprawnień w trakcie wykonywania kolejnych kroków.
 
 Z konsoli należy wykonać kolejno polecenia:
 
@@ -42,30 +44,30 @@ Z konsoli należy wykonać kolejno polecenia:
 minikube config set driver hyperv
 ```
 
-- wystartowanie procesu uruchamiania klastra z określeniem użytego przełącznika 
+- wystartowanie procesu uruchamiania klastra z określeniem przełącznika
 ```
 minikube start --hyperv-virtual-switch="switch0"
 ```
-Po poprawnym wystartowaniu klastra, przystawka zarządznia Hyper-V, powininna przedstawiać sytuację jak na poniższej grafice.
+Po poprawnym wystartowaniu klastra, przystawka zarządzania Hyper-V, powinna przedstawiać sytuację podobną do przedstawionej na poniższej grafice:
 
 ![image](/media/hv2.png)
 
 
-- Zainstalowanie ingress-controller /będzie potrzebny dla jednej z aplikacji
+- Zainstalowanie Ingress-Controller /będzie potrzebny dla jednej z aplikacji
 ```
 minikube addons enable ingress
 ```
 
-- Uruchomienie dashboardu /nie jest to konieczne, ale daje graficzny wgląd w stan klastra.
+- Uruchomienie Dashboardu /nie jest to konieczne, ale daje graficzny wgląd w stan klastra.
 ```
 minikube dashboard
 ```
-> **Uwaga** Powyższe polecenie, nie uwalnia już procesu cmd.exe  W celu kontynuowania należy uruchomić kolejne okno cmd.exe - należy pamiętać o opcji "uruchom jako administrator".
+> **Uwaga** Powyższe polecenie, nie uwalnia już procesu cmd.exe  W celu kontynuowania należy uruchomić kolejne okno cmd.exe. Pamiętać należy o opcji "uruchom jako administrator".
 
 
 ## Uruchomienie aplikacji Arcadia
 
-#### Pobranie wymaganych plików wdrożeniowych
+#### 1. Pobranie plików wdrożeniowych
 
 Proponuję ustalić ścieżkę bieżącą na c:\minikube  - tam będą pobierane pliki. 
 Najprościej zrobić to poleceniem:
@@ -83,7 +85,7 @@ curl --output ingress_arcadia.yaml --url https://raw.githubusercontent.com/Misja
 ```
 
 
-#### Wdrożenie pobranych plików
+#### 2. Wdrożenie pobranych plików
 
 ```
 minikube kubectl -- create -f all_apps.yaml
@@ -93,18 +95,18 @@ minikube kubectl -- create -f all_apps.yaml
 minikube kubectl -- create -f ingress_arcadia.yaml
 ```
 
-Obserwując Dashboard->Workloads - można śledzić stan klastra i zaobserwować kiedy wszystkie serwisy będą już uruchomione. Po tym można przejść do kolejnych czynności.
+Obserwując Dashboard klastra - pozycja Workloads z lewego panelu - można śledzić stan klastra i zaobserwować kiedy wszystkie serwisy będą już uruchomione. Po tym można przejść do kolejnych czynności.
 
 
-### Testowanie działania tej aplikacji
+#### 3. Testowanie działania aplikacji.
 
 
-Aplikacja jest dostępna pod adresem IP maszyny wirtualnej Minikube. Jednym ze sposobów aby odczytać ten adres, jest wgląd na zakładkę "Networking" w widoku właściwości maszyny. Przykład znajduje się na poniższej grafice.
+Aplikacja jest dostępna pod adresem IP maszyny wirtualnej Minikube. Jednym ze sposobów aby uzyskać ten adres, jest wgląd na zakładkę "Networking" w widoku właściwości maszyny. Przykład znajduje się na poniższej grafice.
 
 ![image](/media/hv4.png)
 
 
-Druga (bardziej elegancka) możliwość, to wgląd w Dashboard, Lewe menu/service/Ingresses.  Kolumna Endpoints w głównym oknie - wskazuje adres oraz URL na którym jest wystawiony ingress-controller.  Jak pokazane jest to na grafice poniżej:
+Druga (bardziej elegancka) możliwość, to wgląd w Dashboard, Menu/Service/Ingresses.  Kolumna Endpoints w głównym oknie - wskazuje adres oraz URL na którym jest wystawiony Ingress-Controller.  Pokazane jest to na poniższej grafice:
 
 
 ![image](/media/hv6.png)
@@ -116,29 +118,22 @@ Trzecia możliwość to komenda:
 minikube service --all --namespace=ingress-nginx
 ```
 
-Kolumna URL - wskazuje adres IP
+Kolumna URL wtświetlonej tabeli - wskazuje adres IP.\
 
 
---- potrzebny odstep
-
-
-Aby przetestować  działanie aplikacji, należy wejść na stronę http://example.host.net  Ten FQDN powinien rozwiązywać się na IP maszyny wirtualnej. Aby tak się stało, należy w systemie z którego będziemy wchodzić na podany URL, dodać wpis do pliku hosts - w sposób jak na przykładzie poniżej.
+Aby przetestować działanie aplikacji, należy wejść na stronę http://example.host.net  Ten FQDN powinien być rozwiązywany na IP maszyny wirtualnej. Aby tak się stało, należy w systemie z którego będziemy wchodzić na podany URL, dodać wpis do pliku *hosts* - w sposób jak na przykładzie poniżej.
 
 ![image](/media/hv3.png)
 
-Podkreślony przykładowy adres, należy zastąpić adresem odczytanym jak to przedstawiono powyżej.
+Podkreślony przykładowy adres, należy zastąpić adresem odczytanym jak to przedstawiono powyżej.\
 
-
-Finalnie, aby w pełni sprawdzić działanie aplikacji, można się do niej zalogować.
+Finalnie, aby w pełni sprawdzić działanie aplikacji, powinno się do niej zalogować.\
 Robi się to poprzez  przycisk:
 
 ![image](/media/hv5.png)
 
-*Login to: matt | Hasło: ilovef5*
-Poprawnie pracująca aplikacja przedstawi się podobna prezencją jak niżej zamieszczona grafika.
-Można w niej przeprowadzać mozliwe operacje finansowe.  Oczywiście wszystko dzieje się w środowiku na naszym kmputerze. Moduł wysyłający email's  ocztywiście tylko emuluje taki proces. Żaden email nie trafia na zewnątrz.
+Login to: matt | Hasło: ilovef5\
+Poprawnie pracująca aplikacja, przedstawi się podobną prezencją jak niżej zamieszczona grafika.
+Można w niej przeprowadzać operacje finansowe.  Wszystko oczywiście dzieje się w środowisku na naszym komputerze. Moduł wysyłający email-e  oczywiście tylko emuluje taki proces. Żaden email nie jest wysyłany na zewnątrz.
 
 ![image](/media/hv7.png)
-
-
-
