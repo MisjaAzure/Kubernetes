@@ -8,7 +8,7 @@ Potrzebne elementy:
 - System operacyjny Windows z zainstalowaną funkcją Hyper-V
 - Zainstalowany program wget. Można go pobrać z tej lokalizacji: http://url.przyklad.com/test.gif
 ### Proces uruchomienia klastra
-1. Zainstalowanie aplikacji minikube.exe Należy otworzyć okno konsoli PowerShell i wykonać nastepujący kod:
+#### 1. Zainstalowanie aplikacji minikube.exe Należy otworzyć okno konsoli PowerShell i wykonać nastepujący kod:
 
 ```powershell
 New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
