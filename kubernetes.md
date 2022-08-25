@@ -2,7 +2,7 @@
 Dokument ten, opisuje proces uruchomienia środowiska Kubernetes w oparciu o oprogramowanie Minikube, zainstalowane na systemie operacyjnym Windows.\
 Zawiera również, opis procesu instalowania dwóch przykładowych aplikacji WEB-owych.
 
-## Uruchomienie klastra Minikube  / strona domowa projektu: https://minikube.sigs.k8s.io/docs/
+## Uruchomienie klastra Minikube
 
 Wymagane elementy:
 - Komputer z procesorem x64 zgodnym z VT
@@ -62,7 +62,7 @@ minikube addons enable ingress
 ```
 minikube dashboard
 ```
-> **Uwaga** Powyższe polecenie, nie uwalnia już procesu cmd.exe  W celu kontynuowania należy uruchomić kolejne okno cmd.exe. Pamiętać należy o opcji "uruchom jako administrator".
+> **Uwaga!** - Powyższe polecenie, nie uwalnia już procesu cmd.exe  W celu kontynuowania należy uruchomić kolejne okno cmd.exe. Pamiętać należy o opcji "uruchom jako administrator".
 
 
 ## Uruchomienie aplikacji Arcadia
@@ -118,22 +118,22 @@ Trzecia możliwość to komenda:
 minikube service --all --namespace=ingress-nginx
 ```
 
-Kolumna URL wtświetlonej tabeli - wskazuje adres IP.\
+Kolumna URL wtświetlonej tabeli - wskazuje adres IP\
 
 
-Aby przetestować działanie aplikacji, należy wejść na stronę http://example.host.net  Ten FQDN powinien być rozwiązywany na IP maszyny wirtualnej. Aby tak się stało, należy w systemie z którego będziemy wchodzić na podany URL, dodać wpis do pliku *hosts* - w sposób jak na przykładzie poniżej.
+Aby przetestować działanie aplikacji, należy wejść na stronę http://example.host.net  Ten FQDN powinien być rozwiązywany na IP maszyny wirtualnej. Aby tak się stało, należy w systemie z którego będziemy wchodzić na podany URL, dodać wpis do pliku **hosts** - podobny do tego jak na przykładzie poniżej.
 
 ![image](/media/hv3.png)
 
-Podkreślony przykładowy adres, należy zastąpić adresem odczytanym jak to przedstawiono powyżej.\
+Podkreślony przykładowy adres, należy zastąpić adresem ustalonym w sposób jak to przedstawiono powyżej\
 
-Finalnie, aby w pełni sprawdzić działanie aplikacji, powinno się do niej zalogować.\
+Finalnie, aby w pełni sprawdzić działanie aplikacji, powinno się do niej zalogować\
 Robi się to poprzez  przycisk:
 
 ![image](/media/hv5.png)
 
-Login to: matt | Hasło: ilovef5\
-Poprawnie pracująca aplikacja, przedstawi się podobną prezencją jak niżej zamieszczona grafika.
+Login: matt | Hasło: ilovef5\
+Poprawnie pracująca aplikacja, powinna wyglądać w sposób zbliżony do tego co przedstawia poniższa grafika.
 Można w niej przeprowadzać operacje finansowe.  Wszystko oczywiście dzieje się w środowisku na naszym komputerze. Moduł wysyłający email-e  oczywiście tylko emuluje taki proces. Żaden email nie jest wysyłany na zewnątrz.
 
 ![image](/media/hv7.png)
