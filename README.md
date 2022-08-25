@@ -71,4 +71,5 @@ minikube dashboard
 **Podobnie** jak wyżej. Konieczne jes otwarcie kolejnego okna cmd.exe
 
 
+## Uruchomienie aplikacji Arcadia
 
