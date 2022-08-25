@@ -56,7 +56,7 @@ Po poprawnym wystartowaniu klastra, przystawka zarządznia Hyper-V, powininna pr
 minikube addons enable ingress
 ```
 
-- Uruchomienie dashboardu
+- Uruchomienie dashboardu /nie jest to konieczne, ale daje graficzny wgląd w stan klastra.
 ```
 minikube dashboard
 ```
@@ -93,28 +93,52 @@ minikube kubectl -- create -f all_apps.yaml
 minikube kubectl -- create -f ingress_arcadia.yaml
 ```
 
+Obserwując Dashboard->Workloads - można śledzić stan klastra i zaobserwować kiedy wszystkie serwisy będą już uruchomione. Po tym można przejść do kolejnych czynności.
+
 
 ### Testowanie działania tej aplikacji
 
 
-Aplikacja jest dostępna pod adresem IP maszyny wirtualnej Minikube (Na NodePort). Jednym ze sposobów aby odczytać ten adres, jest wgląd na zakładkę "Networking" w widoku właściwości maszyny. Przykład znajduje się na poniższej grafice.
+Aplikacja jest dostępna pod adresem IP maszyny wirtualnej Minikube. Jednym ze sposobów aby odczytać ten adres, jest wgląd na zakładkę "Networking" w widoku właściwości maszyny. Przykład znajduje się na poniższej grafice.
 
 ![image](/media/hv4.png)
 
 
-Aby przetestować  działanie aplikacji, należy wejść na stronę http://example.host.net  Ten fqdn powinien rozwiązywać się na IP maszyny wirtualnej. Aby tak się stało, należy w systemie z którego będziemy wchodzić na podany URL, dodać wpis do pliku hosts - w sposób jak na przykładzie poniżej.
+Druga (bardziej elegancka) możliwość, to wgląd w Dashboard, Lewe menu/service/Ingresses.  Kolumna Endpoints w głównym oknie - wskazuje adres oraz URL na którym jest wystawiony ingress-controller.  Jak pokazane jest to na grafice poniżej:
+
+
+![image](/media/hv6.png)
+
+
+Trzecia możliwość to komenda:
+
+```
+minikube service --all --namespace=ingress-nginx
+```
+
+Kolumna URL - wskazuje adres IP
+
+
+--- potrzebny odstep
+
+
+Aby przetestować  działanie aplikacji, należy wejść na stronę http://example.host.net  Ten FQDN powinien rozwiązywać się na IP maszyny wirtualnej. Aby tak się stało, należy w systemie z którego będziemy wchodzić na podany URL, dodać wpis do pliku hosts - w sposób jak na przykładzie poniżej.
 
 ![image](/media/hv3.png)
 
+Podkreślony przykładowy adres, należy zastąpić adresem odczytanym jak to przedstawiono powyżej.
 
-Finalnie, aby w pełni sprawdzić działanie aplikacji, mozna się do nie zalogować.
-Robi się to poprzez przycisk:
+
+Finalnie, aby w pełni sprawdzić działanie aplikacji, można się do niej zalogować.
+Robi się to poprzez  przycisk:
 
 ![image](/media/hv5.png)
 
-Login to: matt | Hasło: ilovef5
-
+*Login to: matt | Hasło: ilovef5*
 Poprawnie pracująca aplikacja przedstawi się podobna prezencją jak niżej zamieszczona grafika.
 Można w niej przeprowadzać mozliwe operacje finansowe.  Oczywiście wszystko dzieje się w środowiku na naszym kmputerze. Moduł wysyłający email's  ocztywiście tylko emuluje taki proces. Żaden email nie trafia na zewnątrz.
+
+![image](/media/hv7.png)
+
 
 
