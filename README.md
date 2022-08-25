@@ -1,13 +1,13 @@
 # Kubernetes - instrukcja uruchomienia przykładowego środowiska.
-Dokument ten opisuje proces uruchoenia środowska Kubernetes w oparciu o oprogramowanie Minikube, zainstalowane na systemie Windows.
+Dokument ten opisuje proces uruchomienia środowiska Kubernetes w oparciu o oprogramowanie Minikube, zainstalowane na systemie Windows.
 Zawiera również, opis procesu zainstalowania dwóch przykładowych aplikacji WEB-owych.
 
 ## Uruchomienie klastra Minikube
 
 Wymagane elementy:
-- Komputer x64 z pamięcią o wielkości 6GB lub więcej
-- System operacyjny Windows z zainstalowaną funkcją Hyper-V
-- Zainstalowany program wget. Można go pobrać z tej lokalizacji: http://gnuwin32.sourceforge.net/packages/wget.htm
+- Komputer z procesorem x64 zgodnym z VT, oraz pamięcią operacyjną o wielkości 6GB lub więcej.
+- System operacyjny Windows 10 z włączoną funkcją Hyper-V
+
 
 #### 1. Zainstalowanie aplikacji minikube.exe
 Należy otworzyć okno konsoli PowerShell i wykonać nastepujący kod:
@@ -17,7 +17,7 @@ New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
 Invoke-WebRequest -OutFile 'c:\minikube\minikube.exe' -Uri 'https://github.com/kubernetes/minikube/releases/latest/download/minikube-windows-amd64.exe' -UseBasicParsing
 ```
 #### 2. Dodanie do zmiennej path, wartości wskazującej położenie pliku minikube.exe
-Należy wykonać nastepujący kod:
+Należy wykonać następujący kod:
 ```powershell
 $oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
 if ($oldPath.Split(';') -inotcontains 'C:\minikube'){ `
@@ -37,12 +37,12 @@ Należy urucomić wiersz konsoli cmd.exe w trybie administratora
 
 Z konsoli należy wykonać kolejno polecenia:
 
-- ustawianie domyslnego drivera
+- ustawianie domyślnego drivera VM
 ```
 minikube config set driver hyperv
 ```
 
-- wystartowanie procesu uruchamiania klastra z określeniem uzytego przełącznika 
+- wystartowanie procesu uruchamiania klastra z określeniem użytego przełącznika 
 ```
 minikube start --hyperv-virtual-switch="switch0"
 ```
@@ -56,36 +56,36 @@ Po poprawnym wystartowaniu klastra, przystawka zarządznia Hyper-V, powininna pr
 minikube addons enable ingress
 ```
 
-- Wlaczenie opcji możliwości użycia load-balancera
+- Włączenie opcji możliwości użycia load-balancera
 ```
 minikube tunnel
 ```
-> **Uwaga** Powyższe polecenie, nie uwalnia już procesu cmd.exe  W celu kontynuowania należy uruchomić koljne okno cmd.exe - należy pamiętać o opcji "uruchom jako administrator".
+> **Uwaga** Powyższe polecenie, nie uwalnia już procesu cmd.exe  W celu kontynuowania należy uruchomić kolejne okno cmd.exe - należy pamiętać o opcji "uruchom jako administrator".
 
 - Uruchomienie dashboardu
 ```
 minikube dashboard
 ```
-**Podobnie** jak wyżej. Konieczne jest otwarcie kolejnego okna cmd.exe w trybie administratora.
+Po tym **podobnie** jak wyżej, konieczne jest otwarcie kolejnego okna cmd.exe w trybie administratora.
 
 
 ## Uruchomienie aplikacji Arcadia
 
 #### Pobranie wymaganych plików wdrożeniowych
 
-Prponuję ustalić ścieżkę bieżącą na c:\minikube
+Proponuję ustalić ścieżkę bieżącą na c:\minikube  - tam będą pobierane pliki. 
 Najprościej zrobić to poleceniem:
 ```
 cd \minikube
 ```
-Nastepmnie:
+Następnie:
 
 ```
-wget https://raw.githubusercontent.com/MisjaAzure/Kubernetes/main/deployments/arcadia/all_apps.yaml
+curl --output all_apps.yaml --url https://raw.githubusercontent.com/MisjaAzure/Kubernetes/main/deployments/arcadia/all_apps.yaml
 ```
 
 ```
-wget https://raw.githubusercontent.com/MisjaAzure/Kubernetes/main/deployments/arcadia/ingress_arcadia.yaml
+curl --output ingress_arcadia.yaml --url https://raw.githubusercontent.com/MisjaAzure/Kubernetes/main/deployments/arcadia/ingress_arcadia.yaml
 ```
 
 
