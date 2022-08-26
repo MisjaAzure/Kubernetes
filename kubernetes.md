@@ -1,6 +1,7 @@
 # Kubernetes - instrukcja uruchomienia przykładowego środowiska.
-Dokument ten, opisuje proces uruchomienia środowiska Kubernetes w oparciu o oprogramowanie Minikube, zainstalowane na systemie operacyjnym Windows.\
-Zawiera również, opis procesu instalowania dwóch przykładowych aplikacji WEB-owych.
+Dokument ten, opisuje proces uruchomienia środowiska Kubernetes w oparciu o oprogramowanie Minikube, zainstalowane na systemie operacyjnym Windows.
+
+Zawiera również, opis procesu instalowania dwóch przykładowych aplikacji.
 
 ## Uruchomienie klastra Minikube
 
@@ -10,7 +11,7 @@ Wymagane elementy:
 - System operacyjny Windows 10 z włączoną funkcją Hyper-V
 
 
-#### 1. Zainstalowanie aplikacji minikube.exe
+#### 1. Pobranie aplikacji minikube.exe
 Należy otworzyć okno konsoli PowerShell (jako administrator) i wykonać następujący kod:
 
 ```powershell
@@ -35,7 +36,8 @@ Do tego celu można użyć graficznej przystawki zarządzania Hyper-V (virtmgmt.
 
 #### 4. Uruchomienie klastra.
 Należy uruchomić wiersz konsoli cmd.exe w trybie administratora.
-> **UWAGA!** - Należy wyłączyć ochronę w czasie rzeczywistym, realizowaną przez WindowsDefender. Bez tej czynności, można spodziewać się komunikatów o braku wystarczających uprawnień w trakcie wykonywania kolejnych kroków.
+> **UWAGA!** - Może się okazać koniecznym, wyłączenie ochrony w czasie rzeczywistym, realizowanej przez WindowsDefender. Bez tej czynności, mogą wystąpić komunikaty o braku wystarczających uprawnień w trakcie wykonywania kolejnych kroków. **Jednak nie jest to reguła.**
+
 
 Z konsoli należy wykonać kolejno polecenia:
 
@@ -118,22 +120,84 @@ Trzecia możliwość to komenda:
 minikube service --all --namespace=ingress-nginx
 ```
 
-Kolumna URL wtświetlonej tabeli - wskazuje adres IP\
+Kolumna URL wyświetlonej tabeli - wskazuje adres IP.
 
 
-Aby przetestować działanie aplikacji, należy wejść na stronę http://example.host.net  Ten FQDN powinien być rozwiązywany na IP maszyny wirtualnej. Aby tak się stało, należy w systemie z którego będziemy wchodzić na podany URL, dodać wpis do pliku **hosts** - podobny do tego jak na przykładzie poniżej.
+Aby przetestować działanie aplikacji, należy wejść na stronę http://example.host.net  Ten FQDN powinien być rozwiązywany na IP maszyny wirtualnej. Aby tak się stało, należy w systemie z którego będziemy wchodzić na podany URL, dodać wpis do pliku **hosts** - podobnie do tego, jak jest to pokazane w przykładzie poniżej.
 
 ![image](/media/hv3.png)
 
-Podkreślony przykładowy adres, należy zastąpić adresem ustalonym w sposób jak to przedstawiono powyżej\
+Podkreślony przykładowy adres, należy zastąpić adresem ustalonym w sposób jak to przedstawiono powyżej.
 
-Finalnie, aby w pełni sprawdzić działanie aplikacji, powinno się do niej zalogować\
+Finalnie, aby w pełni sprawdzić działanie aplikacji, trzeba się do niej zalogować.
+
 Robi się to poprzez  przycisk:
 
 ![image](/media/hv5.png)
 
-Login: matt | Hasło: ilovef5\
+Login: matt | Hasło: ilovef5
 Poprawnie pracująca aplikacja, powinna wyglądać w sposób zbliżony do tego co przedstawia poniższa grafika.
 Można w niej przeprowadzać operacje finansowe.  Wszystko oczywiście dzieje się w środowisku na naszym komputerze. Moduł wysyłający email-e  oczywiście tylko emuluje taki proces. Żaden email nie jest wysyłany na zewnątrz.
 
 ![image](/media/hv7.png)
+
+## Uruchomienie aplikacji Sentence generator  (https://github.com/fchmainy/nginx-aks-demo)
+
+#### 1. Pobranie plików wdrożeniowych
+
+
+```
+cd \minikube
+```
+
+Następnie:
+
+```
+curl --output create_namespace.yaml --url https://raw.githubusercontent.com/MisjaAzure/Kubernetes/main/deployments/generator/create_namespace.yaml
+```
+
+```
+curl --output all_attributes.yaml --url https://raw.githubusercontent.com/MisjaAzure/Kubernetes/main/deployments/generator/all_attributes.yaml
+```
+
+```
+curl --output generator-direct.yaml --url https://raw.githubusercontent.com/MisjaAzure/Kubernetes/main/deployments/generator/generator-direct.yaml
+```
+
+```
+curl --output frontend-namespace-generator.yaml --url https://raw.githubusercontent.com/MisjaAzure/Kubernetes/main/deployments/generator/frontend-namespace-generator.yaml
+```
+
+```
+curl --output expose.yaml --url https://raw.githubusercontent.com/MisjaAzure/Kubernetes/main/deployments/generator/expose.yaml
+```
+
+
+
+
+#### 2. Wdrożenie pobranych plików
+
+```
+minikube kubectl -- create -f create_namespace.yaml
+```
+```
+minikube kubectl -- create -f all_attributes.yaml
+```
+```
+minikube kubectl -- create -f generator-direct.yaml
+```
+```
+minikube kubectl -- create -f frontend-namespace-generator.yaml
+```
+```
+minikube kubectl -- create -f expose.yaml
+```
+
+
+#### 3. Testowanie działania aplikacji 
+
+
+Aby uruchomić aplikację, należy wejść na adres http://example.host.net:30999/ 
+Działanie aplikacji polega na tym, że każde na nią nowe wejście (np. poprzez odświeżenie strony) generuje inny tekst.
+
+![image](/media/hv8.png)
