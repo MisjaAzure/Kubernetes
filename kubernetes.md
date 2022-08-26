@@ -136,6 +136,7 @@ Robi się to poprzez  przycisk:
 ![image](/media/hv5.png)
 
 Login: matt | Hasło: ilovef5
+
 Poprawnie pracująca aplikacja, powinna wyglądać w sposób zbliżony do tego co przedstawia poniższa grafika.
 Można w niej przeprowadzać operacje finansowe.  Wszystko oczywiście dzieje się w środowisku na naszym komputerze. Moduł wysyłający email-e  oczywiście tylko emuluje taki proces. Żaden email nie jest wysyłany na zewnątrz.
 
@@ -197,7 +198,8 @@ minikube kubectl -- create -f expose.yaml
 #### 3. Testowanie działania aplikacji 
 
 
-Aby uruchomić aplikację, należy wejść na adres http://example.host.net:30999/ 
+Aby uruchomić aplikację, należy wejść na adres http://example.host.net:30999/
+
 Działanie aplikacji polega na tym, że każde na nią nowe wejście (np. poprzez odświeżenie strony) generuje inny tekst.
 
 ![image](/media/hv8.png)
