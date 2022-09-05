@@ -10,7 +10,7 @@ Wymagane elementy:
 ## Opis kolejnych czynności.
 
 
-###Instalacja agenta (ew. agentów)
+1. ### Instalacja agenta (ew. agentów)
 
 W pasku wyszukiwania portalu Azure, należy wpisać "recovery service vault" (1) i kliknąć w wyszukaną pozycje (2).
 
@@ -71,7 +71,7 @@ Po wciśnięciu **Finish**  powinniśmy zobaczyć okno:
 
 w którego opcjach finiszujemy instalację agenta w j.w. pokazany sposób.
 
-###Wykonanie/zaplanowanie backupu
+2. ### Wykonanie/zaplanowanie backupu
 
 Celem zaplanowania backupu, wchodzimy w opcje aplikacji, tak jak pokazane jest to na grafice:
 
@@ -104,7 +104,7 @@ Po wykonaniu pierwszego backupu, status agenta w portalu Azure, powinien wygląd
 ![image](/media/backup-f-19.png)
 
 
-###Odtworzenie plików z backupu.
+3. ### Odtworzenie plików z backupu.
 
 Pliki odtwarzamy poprzez wywołanie polecenia **Recover Data** jak to przedstawiono poniżej:
 
@@ -117,8 +117,6 @@ Kolejne opcje ustawień, pozwalają wybrać z którego dnia dane zostaną udost�
 Na ostatnim ekranie konfiguracji udostępnienia danych backupu, można wcisnąć przycisk **Browse**:
 
 ![image](/media/backup-f-23.png)
-
-
 
 albo przejść do udostępnionych danych, poprzez eksplorator plików Windows:
 
