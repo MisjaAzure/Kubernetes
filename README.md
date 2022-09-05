@@ -1,4 +1,4 @@
-# KUBERNETES
+# Warsztaty Azure i F5
 ### Zawartość
 1. Opis uruchomienia niewielkiego środowiska labowego na fizycznych zasobach (on-premises).\
    W jego skład wchodzi:
@@ -7,4 +7,3 @@
 
    Link: https://github.com/MisjaAzure/Kubernetes/blob/main/kubernetes.md
 2. Opis...
-
