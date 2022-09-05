@@ -59,10 +59,6 @@ Po poprawnym wystartowaniu klastra, przystawka zarządzania Hyper-V, powinna prz
 
 Dokonuje się tego np. poprzez wgląd w kartę **settings** maszyny wirtualnej.
 
-![image](/media/hvXXXXXX.png)
-
-
-
 Jeśli ilość przypisanej pamięci będzie mniejsza niż 3,5GB RAM - należy ją zwiększyć do 4GB.
 
 Jeśli pamięci będzie tylko w okolicy 2GB-2,5GB - to nie uda się poprawnie uruchomić całego środowiska, lub będzie ono nieakceptowalnie (wolno) pracować.
@@ -75,7 +71,7 @@ W celu jej zatrzymania, należy użyć polecenia:
 minikube stop
 ```
 
-Po zmianie parametrów maszyny, należy ją wystartować poleceniem:
+Po zmianie parametrów maszyny, należy wystartować ją poleceniem:
 
 ```
 minikube start
