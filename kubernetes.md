@@ -7,7 +7,7 @@ Zawiera również, opis procesu instalowania dwóch przykładowych aplikacji.
 
 Wymagane elementy:
 - Komputer z procesorem x64 zgodnym z VT
-- 6GB lub więcej pamięci operacyjnej
+- 8GB lub więcej pamięci operacyjnej
 - System operacyjny Windows 10 z włączoną funkcją Hyper-V
 
 
@@ -53,6 +53,33 @@ minikube start --hyperv-virtual-switch="switch0"
 Po poprawnym wystartowaniu klastra, przystawka zarządzania Hyper-V, powinna przedstawiać sytuację podobną do przedstawionej na poniższej grafice:
 
 ![image](/media/hv2.png)
+
+
+> **UWAGA!** - Należy koniecznie zweryfikować, ilość pamięci RAM, jaka została przyporządkowana maszynie wirtualnej **minikube.** Wielkość ta, zależy to od ilości pamięci którą ma do dyspozycji system hostujący minikube.
+
+Dokonuje się tego np. poprzez wgląd w kartę **settings** maszyny wirtualnej.
+
+![image](/media/hvXXXXXX.png)
+
+
+
+Jeśli ilość przypisanej pamięci będzie mniejsza niż 3,5GB RAM - należy ją zwiększyć do 4GB.
+
+Jeśli pamięci będzie tylko w okolicy 2GB-2,5GB - to nie uda się poprawnie uruchomić całego środowiska, lub będzie ono nieakceptowalnie (wolno) pracować.
+
+Zmiana ilości przypisanej pamięci, możliwa jest po uprzednim zatrzymaniu pracy maszyny wirtualnej.\
+W celu jej zatrzymania, należy użyć polecenia:
+
+
+```
+minikube stop
+```
+
+Po zmianie parametrów maszyny, należy ją wystartować poleceniem:
+
+```
+minikube start
+```
 
 
 - Zainstalowanie Ingress-Controller /będzie potrzebny dla jednej z aplikacji
