@@ -63,7 +63,7 @@ Wciskamy **+ Create new**:
 
 ![image](/media/s2s-f-08.png)
 
-W polu (1) określamy sposób w który identyfikujemy zdalną bramę.
+W polu (1) określamy sposób - w który podamy adres lokalnej bramy.
  
 W polu (2) określamy jej adres (IP albo FQDN - zależnie od wcześniejszego wyboru).
 
@@ -93,16 +93,16 @@ Robimy to poprzez kliknięcie w nazwę połączenia:
 
 ![image](/media/s2s-f-11.png)
 
-Ukaże się następnie formularz:
+Pojawi się formularz:
 
 ![image](/media/s2s-f-12.png)
 
 z którego pobrać należy najbardziej zbliżony do naszych potrzeb plik konfiguracyjny.
 
-Po skonfigurowaniu urządzenia on premises, i poprawnym nawiązaniu połączenia między urządzeniami, powinniśmy uzyskać możliwość komunikacji między maszynami on premises a maszynami w Azure - przy użyciu adresacji prywatnej (określonej w parametrach połączenia).
+Po skonfigurowaniu urządzenia on premises i poprawnym nawiązaniu połączenia między urządzeniami, powinniśmy uzyskać możliwość komunikacji między maszynami on premises a maszynami w Azure - przy użyciu adresacji prywatnej (określonej w parametrach połączenia).
 
 > Warto pamiętać o tym, że w konfiguracji połączenia, może zajść potrzeba włączenia opcji jak na grafice poniżej:
 
 ![image](/media/s2s-f-13.png)
 
-Jest to konieczne w sytuacji, gdy urządzenie on premises nie obsługuje **Route-based VPN**, posługując  się regułami typu **policy-based VPN**.
+Jest to konieczne w sytuacji, gdy urządzenie on premises nie obsługuje **Route-based VPN**, lecz **policy-based VPN**.

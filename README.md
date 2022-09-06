@@ -4,7 +4,7 @@
 
    W jego skład wchodzi:
     - uruchomienie klastra K8S na bazie oprogramowania Minikube
-    - uruchomineie w utworzonym klastrze - dwóch aplikacji
+    - uruchomienie w utworzonym klastrze - dwóch aplikacji
 
    Link: https://github.com/MisjaAzure/Kubernetes/blob/main/kubernetes.md
    

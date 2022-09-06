@@ -17,7 +17,7 @@ Instalację Virtual network gateway - opisałem w instrukcji dotyczącej VPN typ
 
 ### 2. Konfiguracja bramy VPN.
 
-W głównym panelu zasobu **Virtual network gateway**, neleży kliknąć w **point-to-site configuration**,  jak przedstawia grafika:
+W głównym panelu zasobu **Virtual network gateway**, należy kliknąć w **point-to-site configuration**,  jak przedstawia grafika:
 
 ![image](/media/c2s-f-01.png)
 
@@ -29,13 +29,13 @@ Klikamy w **Configure now**. Zostają odkryte pola opcji konfigurujących bramę
 
 ![image](/media/c2s-f-03.png)
 
-W polu **address pool** - określamy adresację jaka będzie przydzielana dla klientów łączących się za pośrenictwem tej bramy. Adresacja ta nie może pokrywać się z żadną pulą sieci w Azure lub on premises.
+W polu **address pool** - określamy adresację jaka będzie przydzielana dla klientów łączących się za pośrednictwem tej bramy. Adresacja ta nie może pokrywać się z żadną pulą sieci w Azure lub on premises.
 
 W polu **Tunnel type** ustalamy typ połączenia VPN. W tym labie wybrałem SSTP.
 
 Pole **Authentication type** określa sposób w jaki użytkownicy będą się uwierzytelniać.
 
-Pod sekcją **Root certificates** wypełaniamy pola:
+Pod sekcją **Root certificates** wypełniamy pola:
 - **Name** - dowolna nazwa
 - **Public certificate data** - tu wklejamy certyfikat CA, które wystawiło certyfikat(y) dla klientów.
 
@@ -95,12 +95,12 @@ W kolejnym kroku, otwieramy w notesie (albo innym edytorze tekstowym) wyeksporto
 
 ![image](/media/c2s-f-10.png)
 
-Wskazany ciąg znaków w dowolny sposób umieszczamyc w schowku, aby móc go wkleić w formularzu konfiguracji bramy VPN:
+Wskazany ciąg znaków w dowolny sposób umieszczamy w schowku, aby móc go wkleić w formularzu konfiguracji bramy VPN:
 
 
 ![image](/media/c2s-f-11.png)
 
-W celu zakończenia konfiguarcji bramy, pozostało tylko naciśnięcie przycisku **Save** (1) oraz ściągnięcie **klienta VPN** (2).
+W celu zakończenia konfiguracji bramy, pozostało tylko naciśnięcie przycisku **Save** (1) oraz ściągnięcie **klienta VPN** (2).
 
 ![image](/media/c2s-f-12.png)
 
