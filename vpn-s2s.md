@@ -31,7 +31,7 @@ Należy wypełnić go zgodnie z możliwymi wyborami. Proszę zwrócić uwagę na
 
 Kilka słów na temat pozycji opisanej jako **Gateway subnet address range**.  Jest to adresacja dodatkowej podsieci, która zostanie stworzona w trakcie wdrażania tego zasobu. Tą adresację można ustalić samodzielnie. Oczywiście musi ona zawierać się w adresacji głównej (root) wirtualnej sieci (na formularzu pozycja: Virtual network). 
 
-Po wypełnieniu formularza, należy zastosować przycisk **Review + create ** a później **Create**
+Po wypełnieniu formularza, należy zastosować przycisk **Review + create** a później **Create**
 
 Po stworzeniu zasobu (trwa to dłuższą chwilę), należy wejść w jego główny panel:
 
@@ -105,6 +105,6 @@ Po skonfigurowaniu urządzenia on premises, i poprawnym nawiązaniu połączenia
 
 > Warto pamiętać o tym, że w konfiguracji połączenia, może zajść potrzeba włączenia opcji jak na grafice poniżej:
 
-![image](/media/s2s-f-12.png)
+![image](/media/s2s-f-13.png)
 
 Jest to konieczne w sytuacji, gdy urządzenie on premises nie obsługuje "Route-based VPN", posługując  się regułami typu **policy-based VPN**
