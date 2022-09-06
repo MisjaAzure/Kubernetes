@@ -15,11 +15,9 @@
 
 #### 3. Opis zestawienia VPN typu S2S - między platformą Azure a środowiskiem on premises.
 
-
    Link: https://github.com/MisjaAzure/Warsztaty-Azure-F5/blob/main/vpn-s2s.md
-   
-   
+
+
 #### 4. Opis zestawienia VPN typu Client to Site (to Azure).
 
-
-   Link: 
+   Link: https://github.com/MisjaAzure/Warsztaty-Azure-F5/blob/main/vpn-c2s.md

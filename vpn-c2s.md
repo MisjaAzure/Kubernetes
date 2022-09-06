@@ -25,7 +25,7 @@ zostanie wyświetlony formularz:
 
 ![image](/media/c2s-f-02.png)
 
-Klikamy w **Configure now**.  Pojawi się formularz:
+Klikamy w **Configure now**. Zostają odkryte pola opcji konfigurujących bramę VPN:
 
 ![image](/media/c2s-f-03.png)
 
@@ -39,7 +39,7 @@ Pod sekcją **Root certificates** wypełaniamy pola:
 - **Name** - dowolna nazwa
 - **Public certificate data** - tu wklejamy certyfikat CA, które wystawiło certyfikat(y) dla klientów.
 
-#### Wygenerowanie potrzebnego certyfikatu root CA i certyfikatu dla klienta.
+#### Wygenerowanie potrzebnego certyfikatu Root CA i certyfikatu dla klienta.
 
 Przechodzimy do pulpitu maszyny, która będzie naszym testowym klientem. 
 Uruchamiamy power-shell i wykonujemy dwa poniższe skrypty:
@@ -59,7 +59,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
 ```
 
-Pierwszy skrypt - generuje certyfikat root CA.
+Pierwszy skrypt - generuje certyfikat Root CA.
 
 Drugi skrypt - tworzy certyfikat dla klienta, którego wystawcą jest utworzone wcześniej CA
 
@@ -67,9 +67,9 @@ Przebieg powyższego przedstawia poniższa grafika:
 
 ![image](/media/c2s-f-04.png)
 
-Teraz, należy wyeksportować stworzony certyfikat root CA, który będzie wklejony w pole **Public certificate data**.
+Teraz, należy wyeksportować stworzony certyfikat Root CA, który będzie wklejony w pole **Public certificate data**.
 
-Można to zrobić, wykonując kroki jak opisane jest to dalej.
+Można to zrobić, wykonując kroki jak opisane jest to poniżej.
 
 Należy uruchomić przystawkę **certmgr.msc**:
 
@@ -100,12 +100,13 @@ Wskazany ciąg znaków w dowolny sposób umieszczamyc w schowku, aby móc go wkl
 
 ![image](/media/c2s-f-11.png)
 
-
 W celu zakończenia konfiguarcji bramy, pozostało tylko naciśnięcie przycisku **Save** (1) oraz ściągnięcie **klienta VPN** (2).
 
 ![image](/media/c2s-f-12.png)
 
 Klienta dostarczamy na komputer który będzie miał nawiązać połączenie.
+
+### 3. Konfiguracja klienta VPN.
 
 Rozpakowujemy dostarczony plik .zip
 
@@ -116,3 +117,5 @@ Powyższe czynności przedstawia grafika:
 ![image](/media/c2s-f-13.png)
 
 Pozostaje już tylko nawiązanie połączenia i przetestowanie łączności do zasobu w Azure:
+
+![image](/media/c2s-f-14.png)
