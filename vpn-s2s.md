@@ -12,7 +12,7 @@ Wymagane elementy:
 ## Opis czynności.
 
 
-1. ### Instalacja zasobu Virtual network gateway (bramy VPN)
+### 1. Instalacja zasobu Virtual network gateway (bramy VPN)
 
 
 W pasku wyszukiwania portalu Azure, należy wpisać "virtual network gateway" i wybrać  wyszukaną pozycję:
@@ -37,7 +37,7 @@ Po stworzeniu zasobu (trwa to dłuższą chwilę), należy wejść w jego głów
 
 ![image](/media/s2s-f-04.png)
 
-2. ### Utworzenie połączenia
+### 2. Utworzenie połączenia
 
 Należy wejść w opcję Settings/Connections (jak na powyższej grafice, zaznaczono na czerwono):
 
@@ -85,7 +85,7 @@ Wrócimy do **Overiew** naszej bramy:
 
 W miejscu zaznaczonym na czerwono - zobaczymy status naszego połączenia.
 
-3. ### Konfiguracja bramy on premises
+### 3. Konfiguracja bramy on premises
 
 Teraz następuje pora na skonfigurowanie urządzenia znajdującego się w lokalu on premises.
 
