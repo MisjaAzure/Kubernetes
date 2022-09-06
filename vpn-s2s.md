@@ -1,19 +1,17 @@
 # Zestawienie VPN typu S2S, między platformą Azure a środowiskiem on premises.
 
-## Wymagania
+## Wymagania.
 
 Wymagane elementy:
 - Konto na platformie Azure wraz z Subskrypcją. 
 - Wdrożona sieć wirtualna.
 - Maszyna w Azure - z którą można przetestować połączenie.
-- Środowisko on premises z dowolną bramą obsługującą połączenia IPSEC/VPN, wystawioną na publicznym adresie (może być adres dynamiczny + DDNS)
+- Środowisko on premises z dowolną bramą obsługującą połączenia IPSEC/VPN, wystawioną na publicznym adresie (może być adres dynamiczny + DDNS).
 
 
 ## Opis czynności.
 
-
-### 1. Instalacja zasobu Virtual network gateway (bramy VPN)
-
+### 1. Instalacja zasobu Virtual network gateway (bramy VPN).
 
 W pasku wyszukiwania portalu Azure, należy wpisać "virtual network gateway" i wybrać  wyszukaną pozycję:
 
@@ -31,13 +29,13 @@ Należy wypełnić go zgodnie z możliwymi wyborami. Proszę zwrócić uwagę na
 
 Kilka słów na temat pozycji opisanej jako **Gateway subnet address range**.  Jest to adresacja dodatkowej podsieci, która zostanie stworzona w trakcie wdrażania tego zasobu. Tą adresację można ustalić samodzielnie. Oczywiście musi ona zawierać się w adresacji głównej (root) wirtualnej sieci (na formularzu pozycja: Virtual network). 
 
-Po wypełnieniu formularza, należy zastosować przycisk **Review + create** a później **Create**
+Po wypełnieniu formularza, należy zastosować przycisk **Review + create** a później **Create**.
 
 Po stworzeniu zasobu (trwa to dłuższą chwilę), należy wejść w jego główny panel:
 
 ![image](/media/s2s-f-04.png)
 
-### 2. Utworzenie połączenia
+### 2. Utworzenie połączenia.
 
 Należy wejść w opcję Settings/Connections (jak na powyższej grafice, zaznaczono na czerwono):
 
@@ -49,13 +47,13 @@ Wciskamy **+ Add**:
 
 Szczególnie istotne opcje, są wyszczególnione na grafice.
 
-W pozycji (1) należy wybrać dany **virtual network gateway** (kiedy mamy tylko jeden - lista nie rozwija się)
+W pozycji (1) należy wybrać dany **virtual network gateway** (kiedy mamy tylko jeden - lista nie rozwija się).
 
-W pozycji (2) - określamy wersję protokołu IKE.  (gdy nie zachodzi konieczność użycia IKEv1 - poprawnym wyborem będzie IKEv2)
+W pozycji (2) - określamy wersję protokołu IKE. Kiedy nie zachodzi konieczność użycia IKEv1 - poprawnym wyborem będzie IKEv2.
 
 W polu (3) - należy podać klucz PSK - który będzie również użyty w bramie po stronie on premises.
 
-#### Opisanie konfiguracji bramy on premises
+#### Opisanie konfiguracji bramy on premises.
 
 W polu (4) - wybieramy konfigurację bramy on premises.  Kiedy nie mamy wcześniej zdefiniowanej żadnej bramy - pokaże się nam formularz:
 
@@ -85,11 +83,11 @@ Wrócimy do **Overiew** naszej bramy:
 
 W miejscu zaznaczonym na czerwono - zobaczymy status naszego połączenia.
 
-### 3. Konfiguracja bramy on premises
+### 3. Konfiguracja bramy on premises.
 
 Teraz następuje pora na skonfigurowanie urządzenia znajdującego się w lokalu on premises.
 
-Dla uproszczenia konfiguracji i uściślenia  wymagań stawianych przez bramę w Azure - możemy skorzystać z możliwości wyeksportowania gotowego pliku (skryptu) konfiguracji dla  niektórych urządzeń, lub choćby oglądnięcia wymaganych ustawień - i zaimplementowania ich po stronie **dowolnego rozwiązania IPSEC/VPN**
+Dla uproszczenia konfiguracji i uściślenia  wymagań stawianych przez bramę w Azure - możemy skorzystać z możliwości wyeksportowania gotowego pliku (skryptu) konfiguracji dla  niektórych urządzeń, lub choćby oglądnięcia wymaganych ustawień - i zaimplementowania ich po stronie **dowolnego rozwiązania IPSEC/VPN**.
 
 Robimy to poprzez kliknięcie w nazwę połączenia:
 
@@ -101,10 +99,10 @@ Ukaże się następnie formularz:
 
 z którego pobrać należy najbardziej zbliżony do naszych potrzeb plik konfiguracyjny.
 
-Po skonfigurowaniu urządzenia on premises, i poprawnym nawiązaniu połączenia między urządzeniami, powinniśmy uzyskać możliwość komunikacji między maszynami on premises a maszynami w Azure - przy użyciu adresacji prywatnej (określonej w parametrach połączenia)
+Po skonfigurowaniu urządzenia on premises, i poprawnym nawiązaniu połączenia między urządzeniami, powinniśmy uzyskać możliwość komunikacji między maszynami on premises a maszynami w Azure - przy użyciu adresacji prywatnej (określonej w parametrach połączenia).
 
 > Warto pamiętać o tym, że w konfiguracji połączenia, może zajść potrzeba włączenia opcji jak na grafice poniżej:
 
 ![image](/media/s2s-f-13.png)
 
-Jest to konieczne w sytuacji, gdy urządzenie on premises nie obsługuje "Route-based VPN", posługując  się regułami typu **policy-based VPN**
+Jest to konieczne w sytuacji, gdy urządzenie on premises nie obsługuje **Route-based VPN**, posługując  się regułami typu **policy-based VPN**.
