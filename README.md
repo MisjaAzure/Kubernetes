@@ -1,23 +1,100 @@
 # Warsztaty Azure i F5
-### Zawartość
-#### 1. Opis uruchomienia niewielkiego środowiska labowego na fizycznych zasobach (on-premises).
+
+### Dokumenty własne
+
+#### 1. Opis uruchomienia niewielkiego środowiska Kubernetes - na fizycznych zasobach (on-premises).
 
    W jego skład wchodzi:
     - uruchomienie klastra K8S na bazie oprogramowania Minikube
     - uruchomienie w utworzonym klastrze - dwóch aplikacji
 
-   Link: https://github.com/MisjaAzure/Kubernetes/blob/main/kubernetes.md
+   https://github.com/MisjaAzure/Kubernetes/blob/main/kubernetes.md
    
 #### 2. Opis konfiguracji backupu Azure.
    Opis przedstawia kolejne kroki, celem skonfigurowania backupu na poziomie plików - z zasobów lokalnych do Azure.
 
-   Link: https://github.com/MisjaAzure/Warsztaty-Azure-F5/blob/main/file-backup-to-Azure.md
+   https://github.com/MisjaAzure/Warsztaty-Azure-F5/blob/main/file-backup-to-Azure.md
 
 #### 3. Opis zestawienia VPN typu S2S - między platformą Azure a środowiskiem on premises.
 
-   Link: https://github.com/MisjaAzure/Warsztaty-Azure-F5/blob/main/vpn-s2s.md
+   https://github.com/MisjaAzure/Warsztaty-Azure-F5/blob/main/vpn-s2s.md
 
 
 #### 4. Opis zestawienia VPN typu Client to Site (to Azure).
 
-   Link: https://github.com/MisjaAzure/Warsztaty-Azure-F5/blob/main/vpn-c2s.md
+   https://github.com/MisjaAzure/Warsztaty-Azure-F5/blob/main/vpn-c2s.md
+   
+#### 5. Opis wdrożenia Load Balancera.
+
+   https://github.com/MisjaAzure/Warsztaty-Azure-F5/blob/main/load-balancer.md
+
+Wdrożenie Load Balancera, umożliwia uzyskanie dostępu do Internetu, maszynom pracującym w sieci Azure. Umożliwia również **przekierowanie portów**, celem osiągnięcia dostępu do określonych usług tych maszyn, bez użycia VPN.
+Oczywiście, innym rozwiązaniem jest przydzielenie adresów publicznych tworzonym maszynom.
+
+W sytuacji, kiedy nie ma potrzeby tworzyć dostępu do maszyn z zewnątrz a istotne jest tylko to - aby one miały dostęp do Internetu - można wówczas wdrożyć urządzenie nazwane **NAT Gateway**.  Nie daje ono jednak możliwości, jaką jest przekierowanie portów. Daje tylko dostęp do Internetu.
+
+### Odnośniki do materiałów w Internecie
+
+#### 1. Dokumentacja dotycząca migracji zasobów on-prem do Azure
+
+  https://docs.microsoft.com/pl-pl/azure/migrate/
+  
+  Migracja VMs z hostów Hyper-V
+  
+  https://docs.microsoft.com/en-us/azure/migrate/tutorial-migrate-hyper-v?tabs=UI
+  
+
+#### 2. Koncepcja  AKS (Azure Kubernetes Services)
+
+  https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads 
+  
+  Sieć w AKS
+  
+  https://docs.microsoft.com/en-us/azure/aks/concepts-network
+  
+  
+#### 3. Azure Hybrid Benefits (AHB)
+
+FAQ
+
+https://azure.microsoft.com/pl-pl/pricing/hybrid-benefit/#faq
+
+Kalkulator
+
+https://azure.microsoft.com/pl-pl/pricing/hybrid-benefit/#calculator
+
+#### 4. Express Route
+
+Lokalizacje partnerów
+
+https://docs.microsoft.com/pl-pl/azure/expressroute/expressroute-locations
+  
+
+#### 5. High Availability | Regiony | Deklaracja zgodności z GDPR
+
+Wykaz regionów
+https://azure.microsoft.com/en-us/explore/global-infrastructure/data-residency/#overview
+
+Lista par regionów
+https://docs.microsoft.com/pl-pl/azure/availability-zones/cross-region-replication-azure 
+
+Interaktywna mapa infrastruktury
+https://infrastructuremap.microsoft.com/
+ 
+ 
+#### 6. Maszyny typu SPOT
+
+Opis + FAQ
+
+https://docs.microsoft.com/pl-pl/azure/virtual-machines/spot-vms
+
+
+#### 7. Rezerwowane instancje
+
+Opis + FAQ
+https://azure.microsoft.com/pl-pl/pricing/reserved-vm-instances/#faq
+
+
+
+#### 8. Kalkulator cen
+https://azure.microsoft.com/pl-pl/pricing/calculator/
